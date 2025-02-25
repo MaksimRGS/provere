@@ -32,7 +32,6 @@ const restrictIP = (req, res, next) => {
     }
 };
 
-// VAPID Keys for Push Notifications
 const vapidKeys = {
     publicKey: process.env.VAPID_PUBLIC_KEY,
     privateKey: process.env.VAPID_PRIVATE_KEY,
@@ -44,7 +43,6 @@ webPush.setVapidDetails(
     vapidKeys.privateKey
 );
 
-// Function to fetch token
 const fetchToken = async () => {
     try {
         const response = await axios.post('https://smartdnevnik.smart.edu.rs/api/authentication', {
@@ -68,10 +66,8 @@ const fetchToken = async () => {
     }
 };
 
-// Schedule token fetch every 2 minutes
 cron.schedule('*/2 * * * *', fetchToken);
 
-// Helper functions for activities
 const loadActivities = async () => {
     try {
         const data = await fsp.readFile(activitiesFile, 'utf8');
@@ -86,7 +82,6 @@ const saveActivities = async (activities) => {
     await fsp.writeFile(activitiesFile, JSON.stringify(activities, null, 4));
 };
 
-// Helper functions for push subscriptions
 const loadSubscriptions = async () => {
     try {
         const data = await fsp.readFile(subscriptionsFile, 'utf8');
@@ -110,7 +105,6 @@ const saveAPIActivities = async (activities) => {
     }
 };
 
-// Helper functions for lektire
 const loadLektire = async () => {
     try {
         const data = await fsp.readFile(lektireFile, 'utf8');
@@ -125,7 +119,6 @@ const saveLektire = async (lektire) => {
     await fsp.writeFile(lektireFile, JSON.stringify(lektire, null, 4));
 };
 
-// Function to send push notifications for tomorrow's activities
 const sendTomorrowActivityNotifications = async () => {
     try {
         if (!token) {
@@ -138,7 +131,6 @@ const sendTomorrowActivityNotifications = async () => {
         const startDate = '09-01-2024';
         const endDate = '08-31-2025';
 
-        // Fetch activities from API
         let apiActivities = [];
         try {
             const response = await axios.get(`https://smartdnevnik.smart.edu.rs/api/actionplanning/actionplanningreport/2a1ac722-ecf2-44c5-babd-502ff91097dd/${startDate}/${endDate}`, {
@@ -155,18 +147,15 @@ const sendTomorrowActivityNotifications = async () => {
             apiActivities = response.data;
             console.log(`Fetched ${apiActivities.length} activities from API`);
 
-            // Save activities to API.json
             await saveAPIActivities(apiActivities);
             console.log('Activities saved to API.json');
         } catch (error) {
             console.error('Error fetching activities from API:', error.message);
         }
 
-        // Load activities from API.json
         const activitiesFromFile = await loadAPIActivities();
         console.log(`Loaded ${activitiesFromFile.length} activities from API.json`);
 
-        // Filter activities for tomorrow
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
         const tomorrowStr = tomorrow.toISOString().split('T')[0];
@@ -178,7 +167,6 @@ const sendTomorrowActivityNotifications = async () => {
 
         console.log(`Activities for tomorrow: ${tomorrowActivities.length}`);
         if (tomorrowActivities.length > 0) {
-            // Prepare payload for notifications
             const subscriptions = await loadSubscriptions();
             console.log(`Loaded ${subscriptions.length} subscriptions`);
 
@@ -196,7 +184,6 @@ const sendTomorrowActivityNotifications = async () => {
                 badge: 'favicon-16x16.png',
             });
 
-            // Send notifications to all subscriptions
             const promises = subscriptions.map(sub =>
                 webPush.sendNotification(sub, payload).catch(err => {
                     console.error('Error sending push notification:', err);
@@ -206,12 +193,10 @@ const sendTomorrowActivityNotifications = async () => {
             await Promise.all(promises);
             console.log(`Notifications sent for ${tomorrowActivities.length} activities`);
 
-            // Mark activities as notified
             tomorrowActivities.forEach(activity => {
                 activity.notificationSent = true;
             });
 
-            // Save updated activities back to API.json
             await saveAPIActivities(activitiesFromFile);
             console.log('Updated activities saved to API.json');
         } else {
@@ -222,7 +207,6 @@ const sendTomorrowActivityNotifications = async () => {
     }
 };
 
-// Serbian to English month mapping
 const monthMapping = {
     'januar': 'january',
     'februar': 'february',
@@ -267,7 +251,6 @@ async function sendLektireNotifications() {
 
 cron.schedule('0 8 1 * *', sendLektireNotifications);
 
-// Schedule daily notifications at midnight
 cron.schedule('0 0 * * *', sendTomorrowActivityNotifications);
 
 app.get('/api/my-ip', (req, res) => {
@@ -275,7 +258,6 @@ app.get('/api/my-ip', (req, res) => {
     res.json({ ip });
 });
 
-// Endpoint to save push subscriptions
 app.post('/api/save-subscription', async (req, res) => {
     try {
         const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
@@ -317,7 +299,6 @@ const sendPushNotifications = async (message) => {
     await Promise.all(promises);
 };
 
-// Endpoint to add an activity for tomorrow
 app.post('/api/add-activity', restrictIP, async (req, res) => {
     try {
         const today = new Date();
@@ -350,7 +331,6 @@ app.post('/api/add-activity', restrictIP, async (req, res) => {
         activities.push(newActivity);
         await saveActivities(activities);
 
-        // Send push notifications
         await sendPushNotifications(`${newActivity.subject.subjectName} is scheduled for tomorrow.`);
 
         res.json({ message: "Activity added successfully", activity: newActivity });
@@ -360,7 +340,6 @@ app.post('/api/add-activity', restrictIP, async (req, res) => {
     }
 });
 
-// API Endpoint for the action report
 app.get('/api/action-report', async (req, res) => {
     if (!token) {
         return res.status(400).json({ error: 'Token not available. Please wait until the token is fetched.' });
@@ -486,7 +465,6 @@ app.get('/api/absances', async (req, res) => {
     }
 });
 
-// Endpoint to get lektire from JSON file
 app.get('/api/get-lektire', async (req, res) => {
     try {
         const lektire = await loadLektire();
@@ -509,7 +487,6 @@ app.post('/api/add-edit-lektira', async (req, res) => {
         const lektire = await loadLektire();
         
         if (id) {
-            // Edit existing lektira
             const index = lektire.findIndex(l => l.id === id);
             if (index === -1) {
                 return res.status(404).json({ error: 'Lektira not found' });
@@ -524,9 +501,8 @@ app.post('/api/add-edit-lektira', async (req, res) => {
                 pdfUrl: pdfUrl || ''
             };
         } else {
-            // Add new lektira
             const newLektira = {
-                id: (lektire.length + 1).toString(), // Simple sequential ID
+                id: (lektire.length + 1).toString(), 
                 title,
                 author,
                 month,
@@ -564,9 +540,8 @@ app.get('/api/porn' , (req, res) => {
     }
 })
 
-// Start the server
 const PORT = 3009;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
-    fetchToken(); // Fetch the token immediately when the server starts
+    fetchToken(); 
 });
