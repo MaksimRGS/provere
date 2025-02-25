@@ -520,10 +520,6 @@ app.post('/api/add-edit-lektira', async (req, res) => {
     }
 });
 
-app.get('/api/porn' , (req, res) => {
-      res.json("Hi I am porn, oh you thought you would see porn. Well nah");
-  })
-
   app.delete('/api/lektira/:id', restrictIP, async (req, res) => {
     try {
         const lektire = await loadLektire();
