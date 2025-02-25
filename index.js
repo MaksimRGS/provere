@@ -39,7 +39,7 @@ const vapidKeys = {
 };
 
 webPush.setVapidDetails(
-    process.env.VAPID_EMAIL,
+'mailto:' + process.env.VAPID_EMAIL,
     vapidKeys.publicKey,
     vapidKeys.privateKey
 );
