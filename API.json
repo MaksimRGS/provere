@@ -1,0 +1,632 @@
+[
+    {
+        "actionPlanningId": "f84ba942-04da-4af6-af34-5e4a4e89417a",
+        "description": "Kontrolni zadatak-Klase i objekti",
+        "date": "2024-09-26T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "d7464fed-06e8-4f62-97b5-b0abaa9909cf",
+        "subjectId": "640a330b-90d8-48a2-9ceb-27a7d53fd60d",
+        "grade": null,
+        "professor": {
+            "professorId": "d7464fed-06e8-4f62-97b5-b0abaa9909cf",
+            "professorName": "Maja Đaković",
+            "userId": "5091dada-9a04-4509-929d-a2fcda467b66"
+        },
+        "subject": {
+            "subjectId": "640a330b-90d8-48a2-9ceb-27a7d53fd60d",
+            "subjectName": "Objektno orjentisano programiranje",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "26/9/2024"
+    },
+    {
+        "actionPlanningId": "496df057-5720-41bb-8be9-b875c0d5bd48",
+        "description": "Kontrolna provera",
+        "date": "2024-09-27T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "48d598d1-1a94-4d4b-9ce7-46901ae161bf",
+        "subjectId": "c1a66691-a48c-40c6-8281-865937787340",
+        "grade": null,
+        "professor": {
+            "professorId": "48d598d1-1a94-4d4b-9ce7-46901ae161bf",
+            "professorName": "Ivana Jović",
+            "userId": "df479279-b653-4634-a73e-c87654beede1"
+        },
+        "subject": {
+            "subjectId": "c1a66691-a48c-40c6-8281-865937787340",
+            "subjectName": "Matematika",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "27/9/2024"
+    },
+    {
+        "actionPlanningId": "df6c868b-386c-4686-a7e1-eee3fb419b9a",
+        "description": "Контролни задатак 1 - магнетно поље (теорија).",
+        "date": "2024-10-04T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "386692ab-4fe3-4917-99b0-88d92e6ce623",
+        "subjectId": "c1c47fd4-649e-4b15-aef3-68af828f523b",
+        "grade": null,
+        "professor": {
+            "professorId": "386692ab-4fe3-4917-99b0-88d92e6ce623",
+            "professorName": "Atila Jakubec",
+            "userId": "3908f012-e7d6-40ee-a01e-326a731cd08d"
+        },
+        "subject": {
+            "subjectId": "c1c47fd4-649e-4b15-aef3-68af828f523b",
+            "subjectName": "Fizika",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "4/10/2024"
+    },
+    {
+        "actionPlanningId": "8a87b404-b0fb-421b-bb91-c383990204e0",
+        "description": "Prvi školski pismeni zadatak",
+        "date": "2024-10-11T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "fdfb71bb-6a1c-4488-ae37-9376743e79b4",
+        "subjectId": "99112e63-49a4-4ad6-b083-07a758fb49c7",
+        "grade": null,
+        "professor": {
+            "professorId": "fdfb71bb-6a1c-4488-ae37-9376743e79b4",
+            "professorName": "Svetozar Marčeta",
+            "userId": "5095ad3d-3514-4aec-8883-7f1312588b28"
+        },
+        "subject": {
+            "subjectId": "99112e63-49a4-4ad6-b083-07a758fb49c7",
+            "subjectName": "Srpski jezik i knjizevnost",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "11/10/2024"
+    },
+    {
+        "actionPlanningId": "d44e48e1-f6d5-450c-9191-86863b10c272",
+        "description": "Baze podataka",
+        "date": "2024-10-16T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "8d9013b7-d49c-4348-986e-0270840a4212",
+        "subjectId": "8ebc81c0-45c5-43fc-acd1-d883ea9f6bad",
+        "grade": null,
+        "professor": {
+            "professorId": "8d9013b7-d49c-4348-986e-0270840a4212",
+            "professorName": "Saša Krulj",
+            "userId": "a30e1207-5cd4-4ef1-9861-d0a93a993ecc"
+        },
+        "subject": {
+            "subjectId": "8ebc81c0-45c5-43fc-acd1-d883ea9f6bad",
+            "subjectName": "Modeli i baze podataka",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "16/10/2024"
+    },
+    {
+        "actionPlanningId": "3d529a18-6357-4ce4-bb96-8e551ad9c0f6",
+        "description": "Kontrolna provera",
+        "date": "2024-10-17T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "48d598d1-1a94-4d4b-9ce7-46901ae161bf",
+        "subjectId": "0ccf72dc-fec6-4088-89b9-3c42f8668e16",
+        "grade": null,
+        "professor": {
+            "professorId": "48d598d1-1a94-4d4b-9ce7-46901ae161bf",
+            "professorName": "Ivana Jović",
+            "userId": "df479279-b653-4634-a73e-c87654beede1"
+        },
+        "subject": {
+            "subjectId": "0ccf72dc-fec6-4088-89b9-3c42f8668e16",
+            "subjectName": "Diskretna matematika",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "17/10/2024"
+    },
+    {
+        "actionPlanningId": "cea5d0f7-4a39-4278-b6cf-cdc331c804e6",
+        "description": "Kontrolni rad",
+        "date": "2024-10-21T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "7424c036-05bc-4778-8661-c82c42c1e9ec",
+        "subjectId": "4430392a-f4a4-487d-832b-18e2825a2052",
+        "grade": null,
+        "professor": {
+            "professorId": "7424c036-05bc-4778-8661-c82c42c1e9ec",
+            "professorName": "Đorđe Tovjanin",
+            "userId": "098037f2-9c79-4d64-9570-a09d25be98be"
+        },
+        "subject": {
+            "subjectId": "4430392a-f4a4-487d-832b-18e2825a2052",
+            "subjectName": "Primena racunara",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "21/10/2024"
+    },
+    {
+        "actionPlanningId": "440cd7d8-71a6-41f3-aff5-c2164ca33eb1",
+        "description": "Pismena provera",
+        "date": "2024-10-23T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "48d598d1-1a94-4d4b-9ce7-46901ae161bf",
+        "subjectId": "c1a66691-a48c-40c6-8281-865937787340",
+        "grade": null,
+        "professor": {
+            "professorId": "48d598d1-1a94-4d4b-9ce7-46901ae161bf",
+            "professorName": "Ivana Jović",
+            "userId": "df479279-b653-4634-a73e-c87654beede1"
+        },
+        "subject": {
+            "subjectId": "c1a66691-a48c-40c6-8281-865937787340",
+            "subjectName": "Matematika",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "23/10/2024"
+    },
+    {
+        "actionPlanningId": "b7e4119c-8b97-4a5c-8a60-926790ef4372",
+        "description": "Test",
+        "date": "2024-10-29T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "28c12207-02b2-483a-b056-5dce35a1b80b",
+        "subjectId": "53b95995-1a3d-4130-9c53-c3bebb292e67",
+        "grade": null,
+        "professor": {
+            "professorId": "28c12207-02b2-483a-b056-5dce35a1b80b",
+            "professorName": "Aleksandar Radišić",
+            "userId": "43f5a0b5-bd1c-43cd-a12f-539ced912e0a"
+        },
+        "subject": {
+            "subjectId": "53b95995-1a3d-4130-9c53-c3bebb292e67",
+            "subjectName": "Engleski jezik",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "29/10/2024"
+    },
+    {
+        "actionPlanningId": "d036ae47-0753-4d36-801e-bb697ddb1be3",
+        "description": "I Pismeni zadatak",
+        "date": "2024-11-20T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "48d598d1-1a94-4d4b-9ce7-46901ae161bf",
+        "subjectId": "0ccf72dc-fec6-4088-89b9-3c42f8668e16",
+        "grade": null,
+        "professor": {
+            "professorId": "48d598d1-1a94-4d4b-9ce7-46901ae161bf",
+            "professorName": "Ivana Jović",
+            "userId": "df479279-b653-4634-a73e-c87654beede1"
+        },
+        "subject": {
+            "subjectId": "0ccf72dc-fec6-4088-89b9-3c42f8668e16",
+            "subjectName": "Diskretna matematika",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "20/11/2024"
+    },
+    {
+        "actionPlanningId": "64b24b34-a71a-4e34-a0ad-293b9bf3a177",
+        "description": "II kontrolni zadatak ",
+        "date": "2024-11-22T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "48d598d1-1a94-4d4b-9ce7-46901ae161bf",
+        "subjectId": "c1a66691-a48c-40c6-8281-865937787340",
+        "grade": null,
+        "professor": {
+            "professorId": "48d598d1-1a94-4d4b-9ce7-46901ae161bf",
+            "professorName": "Ivana Jović",
+            "userId": "df479279-b653-4634-a73e-c87654beede1"
+        },
+        "subject": {
+            "subjectId": "c1a66691-a48c-40c6-8281-865937787340",
+            "subjectName": "Matematika",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "22/11/2024"
+    },
+    {
+        "actionPlanningId": "a9da463d-0452-4141-8b7f-aa12be9799a8",
+        "description": "Контролни задатак 2 - магнетно поље (задаци).",
+        "date": "2024-11-26T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "386692ab-4fe3-4917-99b0-88d92e6ce623",
+        "subjectId": "c1c47fd4-649e-4b15-aef3-68af828f523b",
+        "grade": null,
+        "professor": {
+            "professorId": "386692ab-4fe3-4917-99b0-88d92e6ce623",
+            "professorName": "Atila Jakubec",
+            "userId": "3908f012-e7d6-40ee-a01e-326a731cd08d"
+        },
+        "subject": {
+            "subjectId": "c1c47fd4-649e-4b15-aef3-68af828f523b",
+            "subjectName": "Fizika",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "26/11/2024"
+    },
+    {
+        "actionPlanningId": "b9e14b16-742a-4536-8b1e-828288e6e134",
+        "description": "Kontrolni zadatak",
+        "date": "2024-11-27T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "ffd81934-39f3-49bf-b99f-34b644b9f2d6",
+        "subjectId": "5ba29219-531b-42d1-ae22-4b1b85186816",
+        "grade": null,
+        "professor": {
+            "professorId": "ffd81934-39f3-49bf-b99f-34b644b9f2d6",
+            "professorName": "Aleksandar Stojičić",
+            "userId": "6b54b50b-d252-4cb1-acb7-f53f4a53ff5e"
+        },
+        "subject": {
+            "subjectId": "5ba29219-531b-42d1-ae22-4b1b85186816",
+            "subjectName": "Programiranje ",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "27/11/2024"
+    },
+    {
+        "actionPlanningId": "eb14a64b-ccd8-490e-8421-0ce2c4cf4828",
+        "description": "Drugi školski pismeni zadatak",
+        "date": "2024-12-02T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "fdfb71bb-6a1c-4488-ae37-9376743e79b4",
+        "subjectId": "99112e63-49a4-4ad6-b083-07a758fb49c7",
+        "grade": null,
+        "professor": {
+            "professorId": "fdfb71bb-6a1c-4488-ae37-9376743e79b4",
+            "professorName": "Svetozar Marčeta",
+            "userId": "5095ad3d-3514-4aec-8883-7f1312588b28"
+        },
+        "subject": {
+            "subjectId": "99112e63-49a4-4ad6-b083-07a758fb49c7",
+            "subjectName": "Srpski jezik i knjizevnost",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "2/12/2024"
+    },
+    {
+        "actionPlanningId": "e4d41f5e-07d0-464c-beed-aa31b834b4bd",
+        "description": "Prvi pismeni zadatak",
+        "date": "2024-12-06T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "ffd81934-39f3-49bf-b99f-34b644b9f2d6",
+        "subjectId": "5ba29219-531b-42d1-ae22-4b1b85186816",
+        "grade": null,
+        "professor": {
+            "professorId": "ffd81934-39f3-49bf-b99f-34b644b9f2d6",
+            "professorName": "Aleksandar Stojičić",
+            "userId": "6b54b50b-d252-4cb1-acb7-f53f4a53ff5e"
+        },
+        "subject": {
+            "subjectId": "5ba29219-531b-42d1-ae22-4b1b85186816",
+            "subjectName": "Programiranje ",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "6/12/2024"
+    },
+    {
+        "actionPlanningId": "c9a9375d-5d7e-4b13-811b-5d473d0afc53",
+        "description": "Pismeni zadatak",
+        "date": "2024-12-10T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "28c12207-02b2-483a-b056-5dce35a1b80b",
+        "subjectId": "53b95995-1a3d-4130-9c53-c3bebb292e67",
+        "grade": null,
+        "professor": {
+            "professorId": "28c12207-02b2-483a-b056-5dce35a1b80b",
+            "professorName": "Aleksandar Radišić",
+            "userId": "43f5a0b5-bd1c-43cd-a12f-539ced912e0a"
+        },
+        "subject": {
+            "subjectId": "53b95995-1a3d-4130-9c53-c3bebb292e67",
+            "subjectName": "Engleski jezik",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "10/12/2024"
+    },
+    {
+        "actionPlanningId": "c5cea6f9-de2b-4182-94dd-fa842c02a560",
+        "description": "II kontrolni zadatak ",
+        "date": "2024-12-12T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "48d598d1-1a94-4d4b-9ce7-46901ae161bf",
+        "subjectId": "0ccf72dc-fec6-4088-89b9-3c42f8668e16",
+        "grade": null,
+        "professor": {
+            "professorId": "48d598d1-1a94-4d4b-9ce7-46901ae161bf",
+            "professorName": "Ivana Jović",
+            "userId": "df479279-b653-4634-a73e-c87654beede1"
+        },
+        "subject": {
+            "subjectId": "0ccf72dc-fec6-4088-89b9-3c42f8668e16",
+            "subjectName": "Diskretna matematika",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "12/12/2024"
+    },
+    {
+        "actionPlanningId": "b74e729d-e9eb-4aa0-9027-0339e757f220",
+        "description": "Контролни задатак 3 - електромагнетна индукција и наизменична струја (теорија и задаци)",
+        "date": "2024-12-17T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "386692ab-4fe3-4917-99b0-88d92e6ce623",
+        "subjectId": "c1c47fd4-649e-4b15-aef3-68af828f523b",
+        "grade": null,
+        "professor": {
+            "professorId": "386692ab-4fe3-4917-99b0-88d92e6ce623",
+            "professorName": "Atila Jakubec",
+            "userId": "3908f012-e7d6-40ee-a01e-326a731cd08d"
+        },
+        "subject": {
+            "subjectId": "c1c47fd4-649e-4b15-aef3-68af828f523b",
+            "subjectName": "Fizika",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "17/12/2024"
+    },
+    {
+        "actionPlanningId": "469c694e-f552-4352-a8ca-3ec919a1e1f0",
+        "description": "II pismeni zadatak",
+        "date": "2024-12-18T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "48d598d1-1a94-4d4b-9ce7-46901ae161bf",
+        "subjectId": "c1a66691-a48c-40c6-8281-865937787340",
+        "grade": null,
+        "professor": {
+            "professorId": "48d598d1-1a94-4d4b-9ce7-46901ae161bf",
+            "professorName": "Ivana Jović",
+            "userId": "df479279-b653-4634-a73e-c87654beede1"
+        },
+        "subject": {
+            "subjectId": "c1a66691-a48c-40c6-8281-865937787340",
+            "subjectName": "Matematika",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "18/12/2024"
+    },
+    {
+        "actionPlanningId": "94e48730-b6ef-4867-aea0-5acf42473e60",
+        "description": "Kontrolni - Matabolizam",
+        "date": "2025-02-06T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "3790b21d-ac12-4baf-9640-d4c0016d67c4",
+        "subjectId": "f64a416c-7dab-4f12-975c-786cb8969afc",
+        "grade": null,
+        "professor": {
+            "professorId": "3790b21d-ac12-4baf-9640-d4c0016d67c4",
+            "professorName": "Jelena Lazarević",
+            "userId": "1c5e7186-e968-49e5-823b-03d47f4a1e25"
+        },
+        "subject": {
+            "subjectId": "f64a416c-7dab-4f12-975c-786cb8969afc",
+            "subjectName": "Biologija",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "6/2/2025"
+    },
+    {
+        "actionPlanningId": "dc242f62-e4d4-4fe5-afa1-7e03af3da340",
+        "description": "Baze podataka upiti",
+        "date": "2025-02-20T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "8d9013b7-d49c-4348-986e-0270840a4212",
+        "subjectId": "8ebc81c0-45c5-43fc-acd1-d883ea9f6bad",
+        "grade": null,
+        "professor": {
+            "professorId": "8d9013b7-d49c-4348-986e-0270840a4212",
+            "professorName": "Saša Krulj",
+            "userId": "a30e1207-5cd4-4ef1-9861-d0a93a993ecc"
+        },
+        "subject": {
+            "subjectId": "8ebc81c0-45c5-43fc-acd1-d883ea9f6bad",
+            "subjectName": "Modeli i baze podataka",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "20/2/2025"
+    },
+    {
+        "actionPlanningId": "fb5af1b8-0984-488a-89b6-1b57005b29e3",
+        "description": "I kontrolni zadatak",
+        "date": "2025-02-24T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "48d598d1-1a94-4d4b-9ce7-46901ae161bf",
+        "subjectId": "c1a66691-a48c-40c6-8281-865937787340",
+        "grade": null,
+        "professor": {
+            "professorId": "48d598d1-1a94-4d4b-9ce7-46901ae161bf",
+            "professorName": "Ivana Jović",
+            "userId": "df479279-b653-4634-a73e-c87654beede1"
+        },
+        "subject": {
+            "subjectId": "c1a66691-a48c-40c6-8281-865937787340",
+            "subjectName": "Matematika",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "24/2/2025"
+    },
+    {
+        "actionPlanningId": "b99f390c-176a-48da-b615-7f24d6086442",
+        "description": "Kontrolni zadatak",
+        "date": "2025-02-26T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "ffd81934-39f3-49bf-b99f-34b644b9f2d6",
+        "subjectId": "5ba29219-531b-42d1-ae22-4b1b85186816",
+        "grade": null,
+        "professor": {
+            "professorId": "ffd81934-39f3-49bf-b99f-34b644b9f2d6",
+            "professorName": "Aleksandar Stojičić",
+            "userId": "6b54b50b-d252-4cb1-acb7-f53f4a53ff5e"
+        },
+        "subject": {
+            "subjectId": "5ba29219-531b-42d1-ae22-4b1b85186816",
+            "subjectName": "Programiranje ",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "26/2/2025"
+    },
+    {
+        "actionPlanningId": "9ac4aa34-54be-4f72-961f-f5cf46ea128d",
+        "description": "Контролни задатак 4 - хармонијске осцилације",
+        "date": "2025-02-28T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "386692ab-4fe3-4917-99b0-88d92e6ce623",
+        "subjectId": "c1c47fd4-649e-4b15-aef3-68af828f523b",
+        "grade": null,
+        "professor": {
+            "professorId": "386692ab-4fe3-4917-99b0-88d92e6ce623",
+            "professorName": "Atila Jakubec",
+            "userId": "3908f012-e7d6-40ee-a01e-326a731cd08d"
+        },
+        "subject": {
+            "subjectId": "c1c47fd4-649e-4b15-aef3-68af828f523b",
+            "subjectName": "Fizika",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "28/2/2025"
+    },
+    {
+        "actionPlanningId": "10fb3675-5a6b-4fe1-b7e1-ad121fb9af79",
+        "description": "Kontolni",
+        "date": "2025-03-03T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "19e25e9c-c16f-4dcf-abfe-0376504cf90e",
+        "subjectId": "640a330b-90d8-48a2-9ceb-27a7d53fd60d",
+        "grade": null,
+        "professor": {
+            "professorId": "19e25e9c-c16f-4dcf-abfe-0376504cf90e",
+            "professorName": "Bojana Bratić",
+            "userId": "0b32470e-9ac7-42f0-866c-7253073f9e9a"
+        },
+        "subject": {
+            "subjectId": "640a330b-90d8-48a2-9ceb-27a7d53fd60d",
+            "subjectName": "Objektno orjentisano programiranje",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "3/3/2025"
+    },
+    {
+        "actionPlanningId": "eb57e40a-6cc3-46b6-bc96-2e6f49e851b7",
+        "description": "Kontrolni III",
+        "date": "2025-03-06T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "48d598d1-1a94-4d4b-9ce7-46901ae161bf",
+        "subjectId": "0ccf72dc-fec6-4088-89b9-3c42f8668e16",
+        "grade": null,
+        "professor": {
+            "professorId": "48d598d1-1a94-4d4b-9ce7-46901ae161bf",
+            "professorName": "Ivana Jović",
+            "userId": "df479279-b653-4634-a73e-c87654beede1"
+        },
+        "subject": {
+            "subjectId": "0ccf72dc-fec6-4088-89b9-3c42f8668e16",
+            "subjectName": "Diskretna matematika",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "6/3/2025"
+    },
+    {
+        "actionPlanningId": "882926c1-dfb3-497c-861c-cb84eafd8619",
+        "description": "Treći školski pismeni zadatak",
+        "date": "2025-03-07T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "fdfb71bb-6a1c-4488-ae37-9376743e79b4",
+        "subjectId": "99112e63-49a4-4ad6-b083-07a758fb49c7",
+        "grade": null,
+        "professor": {
+            "professorId": "fdfb71bb-6a1c-4488-ae37-9376743e79b4",
+            "professorName": "Svetozar Marčeta",
+            "userId": "5095ad3d-3514-4aec-8883-7f1312588b28"
+        },
+        "subject": {
+            "subjectId": "99112e63-49a4-4ad6-b083-07a758fb49c7",
+            "subjectName": "Srpski jezik i knjizevnost",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "7/3/2025"
+    },
+    {
+        "actionPlanningId": "f6829622-7fb4-4f9b-a303-46904f6a46be",
+        "description": "test",
+        "date": "2025-03-11T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "28c12207-02b2-483a-b056-5dce35a1b80b",
+        "subjectId": "53b95995-1a3d-4130-9c53-c3bebb292e67",
+        "grade": null,
+        "professor": {
+            "professorId": "28c12207-02b2-483a-b056-5dce35a1b80b",
+            "professorName": "Aleksandar Radišić",
+            "userId": "43f5a0b5-bd1c-43cd-a12f-539ced912e0a"
+        },
+        "subject": {
+            "subjectId": "53b95995-1a3d-4130-9c53-c3bebb292e67",
+            "subjectName": "Engleski jezik",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "11/3/2025"
+    },
+    {
+        "actionPlanningId": "7008f1a9-7319-4f88-acda-19003a5353c0",
+        "description": "Pismeni III",
+        "date": "2025-03-19T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "48d598d1-1a94-4d4b-9ce7-46901ae161bf",
+        "subjectId": "c1a66691-a48c-40c6-8281-865937787340",
+        "grade": null,
+        "professor": {
+            "professorId": "48d598d1-1a94-4d4b-9ce7-46901ae161bf",
+            "professorName": "Ivana Jović",
+            "userId": "df479279-b653-4634-a73e-c87654beede1"
+        },
+        "subject": {
+            "subjectId": "c1a66691-a48c-40c6-8281-865937787340",
+            "subjectName": "Matematika",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "19/3/2025"
+    },
+    {
+        "actionPlanningId": "ea864475-f32d-4c6e-af2d-e1bd286e8900",
+        "description": "Контролни задатак 5 - механички таласи",
+        "date": "2025-03-21T00:00:00",
+        "gradeId": "0bf8d30f-fc86-46f3-b4cd-05f9c8e7faaf",
+        "professorId": "386692ab-4fe3-4917-99b0-88d92e6ce623",
+        "subjectId": "c1c47fd4-649e-4b15-aef3-68af828f523b",
+        "grade": null,
+        "professor": {
+            "professorId": "386692ab-4fe3-4917-99b0-88d92e6ce623",
+            "professorName": "Atila Jakubec",
+            "userId": "3908f012-e7d6-40ee-a01e-326a731cd08d"
+        },
+        "subject": {
+            "subjectId": "c1c47fd4-649e-4b15-aef3-68af828f523b",
+            "subjectName": "Fizika",
+            "subjectType": 10,
+            "markDescription": 10
+        },
+        "dateForDisplay": "21/3/2025"
+    }
+]

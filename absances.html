@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absence Management Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f6f9;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+    
+        .table-hover tbody tr:hover {
+            background-color: rgba(0,123,255,0.1);
+            cursor: pointer;
+        }
+        
+        .stat-card {
+            transition: transform 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .additional-stats .card {
+            background-color: #f8f9fa;
+            border: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .additional-stats .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .additional-stats .card-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid p-4">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="mb-4 text-center">Absence Management Dashboard</h1>
+
+                <!-- Improved Additional Statistics -->
+                <div class="row mb-4 additional-stats">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Average Absences</h5>
+                                <h3 id="averageAbsences" class="text-primary">-</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Least Absences Day</h5>
+                                <h3 id="leastAbsencesDay" class="text-success">-</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Most Absences Day</h5>
+                                <h3 id="mostAbsencesDay" class="text-danger">-</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Days Tracked</h5>
+                                <h3 id="daysTracked" class="text-info">-</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rest of the original HTML remains the same -->
+                <!-- Statistics Cards -->
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="card stat-card bg-primary text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">Total Absences</h5>
+                                <h2 id="totalAbsencesCount" class="card-text">0</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stat-card bg-warning text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">Undefined Absences</h5>
+                                <h2 id="undefinedAbsencesCount" class="card-text">0</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stat-card bg-success text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">Justified Absences</h5>
+                                <h2 id="justifiedAbsencesCount" class="card-text">0</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stat-card bg-danger text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">Unjustified Absences</h5>
+                                <h2 id="unjustifiedAbsencesCount" class="card-text">0</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filters and Search -->
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <input type="text" id="dateRangeFilter" class="form-control" placeholder="Select Date Range">
+                    </div>
+                    <div class="col-md-4">
+                        <select id="absenceTypeFilter" class="form-select">
+                            <option value="">All Absence Types</option>
+                            <option value="undefined">Undefined</option>
+                            <option value="justified">Justified</option>
+                            <option value="unjustified">Unjustified</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" id="searchInput" class="form-control" placeholder="Search...">
+                    </div>
+                </div>
+
+                <!-- Absence Chart -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <canvas id="absenceChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Absence Table -->
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-striped table-hover" id="absenceTable">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Total Absences</th>
+                                    <th>Undefined</th>
+                                    <th>Justified</th>
+                                    <th>Unjustified</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="absenceTableBody">
+                                <!-- Table rows will be dynamically populated -->
+                            </tbody>
+                        </table>
+
+                        <nav>
+                            <ul class="pagination justify-content-center" id="pagination">
+                                <!-- Pagination links will be dynamically generated -->
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Absence Details Modal -->
+    <div class="modal fade" id="absenceDetailsModal" tabindex="-1" aria-labelledby="absenceDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="absenceDetailsModalLabel">Absence Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="absenceDetailsModalBody">
+                    <!-- Details will be dynamically populated -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+let absenceData = [];
+let filteredData = [];
+const itemsPerPage = 10;
+let currentPage = 1;
+let absenceChart;
+
+async function fetchAbsenceData() {
+    try {
+        const response = await fetch('/api/absances');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        absenceData = await response.json();
+        
+        absenceData.sort((a, b) => {
+            const [dayA, monthA, yearA] = a.dateForDisplay.split('/').map(Number);
+            const [dayB, monthB, yearB] = b.dateForDisplay.split('/').map(Number);
+            return new Date(yearB, monthB - 1, dayB) - new Date(yearA, monthA - 1, dayA);
+        });
+
+        calculateAdditionalStatistics();
+        updateStatistics();
+        initializeFilters();
+        renderChart();
+        applyFilters();
+    } catch (error) {
+        console.error('Error fetching absence data:', error);
+        document.getElementById('absenceTableBody').innerHTML = 
+            `<tr><td colspan="6">Error loading data: ${error.message}</td></tr>`;
+    }
+}
+
+function calculateAdditionalStatistics() {
+    const totalAbsences = absenceData.reduce((sum, item) => sum + item.totalAbsences, 0);
+    const averageAbsences = (totalAbsences / absenceData.length).toFixed(2);
+    document.getElementById('averageAbsences').textContent = averageAbsences;
+
+    const leastAbsencesDay = absenceData.reduce((min, day) => 
+        day.totalAbsences < min.totalAbsences ? day : min
+    );
+    document.getElementById('leastAbsencesDay').textContent = 
+        `${leastAbsencesDay.dateForDisplay} (${leastAbsencesDay.totalAbsences})`;
+
+    const mostAbsencesDay = absenceData.reduce((max, day) => 
+        day.totalAbsences > max.totalAbsences ? day : max
+    );
+    document.getElementById('mostAbsencesDay').textContent = 
+        `${mostAbsencesDay.dateForDisplay} (${mostAbsencesDay.totalAbsences})`;
+
+    document.getElementById('daysTracked').textContent = absenceData.length;
+}
+
+function updateStatistics() {
+    const totalAbsences = absenceData.reduce((sum, item) => sum + item.totalAbsences, 0);
+    const undefinedAbsences = absenceData.reduce((sum, item) => sum + item.undefined, 0);
+    const justifiedAbsences = absenceData.reduce((sum, item) => sum + item.justified, 0);
+    const unjustifiedAbsences = absenceData.reduce((sum, item) => sum + item.unjustified, 0);
+
+    document.getElementById('totalAbsencesCount').textContent = totalAbsences;
+    document.getElementById('undefinedAbsencesCount').textContent = undefinedAbsences;
+    document.getElementById('justifiedAbsencesCount').textContent = justifiedAbsences;
+    document.getElementById('unjustifiedAbsencesCount').textContent = unjustifiedAbsences;
+}
+
+function initializeFilters() {
+    flatpickr("#dateRangeFilter", {
+        mode: "range",
+        dateFormat: "d/m/Y",
+        onClose: function(selectedDates, dateStr, instance) {
+            applyFilters();
+        }
+    });
+
+    document.getElementById('absenceTypeFilter').addEventListener('change', applyFilters);
+    document.getElementById('searchInput').addEventListener('input', applyFilters);
+}
+
+function applyFilters() {
+    const dateRange = document.getElementById('dateRangeFilter').value;
+    const absenceType = document.getElementById('absenceTypeFilter').value;
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+    filteredData = absenceData.filter(item => {
+        // Date Range Filter
+        if (dateRange) {
+            const [startDate, endDate] = dateRange.split(' to ').map(d => {
+                const [day, month, year] = d.split('/').map(Number);
+                return new Date(year, month - 1, day);
+            });
+            const itemDate = (() => {
+                const [day, month, year] = item.dateForDisplay.split('/').map(Number);
+                return new Date(year, month - 1, day);
+            })();
+            
+            if (itemDate < startDate || itemDate > endDate) return false;
+        }
+
+        // Absence Type Filter
+        if (absenceType) {
+            if (absenceType === 'undefined' && item.undefined === 0) return false;
+            if (absenceType === 'justified' && item.justified === 0) return false;
+            if (absenceType === 'unjustified' && item.unjustified === 0) return false;
+        }
+
+        // Enhanced Search Filter
+        if (searchTerm) {
+            // Search across multiple fields
+            const searchFields = [
+                item.dateForDisplay.toLowerCase(),
+                ...item.details.map(detail => 
+                    [
+                        detail.subject.subjectName.toLowerCase(),
+                        detail.professor.professorName.toLowerCase()
+                    ]
+                ).flat()
+            ];
+
+            return searchFields.some(field => field.includes(searchTerm));
+        }
+
+        return true;
+    });
+
+    // Reset pagination to first page after filtering
+    currentPage = 1;
+
+    renderTable();
+    renderChart();
+    renderPagination();
+}
+
+
+function renderTable() {
+    const tableBody = document.getElementById('absenceTableBody');
+    tableBody.innerHTML = '';
+
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
+
+    currentItems.forEach(absence => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${absence.dateForDisplay}</td>
+            <td>${absence.totalAbsences}</td>
+            <td>${absence.undefined}</td>
+            <td>${absence.justified}</td>
+            <td>${absence.unjustified}</td>
+            <td>
+                <button class="btn btn-sm btn-info" onclick="viewDetails('${absence.dateForDisplay}')">
+                    View Details
+                </button>
+            </td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+
+function renderPagination() {
+    const paginationContainer = document.getElementById('pagination');
+    paginationContainer.innerHTML = '';
+
+    const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
+    for (let i = 1; i <= totalPages; i++) {
+        const li = document.createElement('li');
+        li.classList.add('page-item');
+        if (i === currentPage) {
+            li.classList.add('active');
+        }
+
+        const button = document.createElement('button');
+        button.classList.add('page-link');
+        button.textContent = i;
+        button.addEventListener('click', () => {
+            currentPage = i;
+            renderTable();
+            renderPagination();
+        });
+
+        li.appendChild(button);
+        paginationContainer.appendChild(li);
+    }
+}
+
+function renderChart() {
+    const ctx = document.getElementById('absenceChart').getContext('2d');
+    
+    if (absenceChart) {
+        absenceChart.destroy();
+    }
+
+    const labels = filteredData.map(item => item.dateForDisplay);
+    const totalAbsences = filteredData.map(item => item.totalAbsences);
+    const undefinedAbsences = filteredData.map(item => item.undefined);
+    const justifiedAbsences = filteredData.map(item => item.justified);
+    const unjustifiedAbsences = filteredData.map(item => item.unjustified);
+
+    absenceChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Total Absences',
+                    data: totalAbsences,
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Undefined',
+                    data: undefinedAbsences,
+                    backgroundColor: 'rgba(255, 206, 86, 0.6)',
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Justified',
+                    data: justifiedAbsences,
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Unjustified',
+                    data: unjustifiedAbsences,
+                    backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Absence Trends'
+                }
+            },
+            scales: {
+                x: {
+                    stacked: true
+                },
+                y: {
+                    stacked: true
+                }
+            }
+        }
+    });
+}
+
+async function viewDetails(date) {
+    const modalBody = document.getElementById('absenceDetailsModalBody');
+    const modalTitle = document.getElementById('absenceDetailsModalLabel');
+
+    try {
+        const absenceRecord = absenceData.find(item => item.dateForDisplay === date);
+
+        if (!absenceRecord || absenceRecord.details.length === 0) {
+            modalBody.innerHTML = '<p>No detailed information available.</p>';
+        } else {
+            modalTitle.textContent = `Absence Details - ${date}`;
+
+            let detailsHtml = `
+                <div class="row">
+                    <div class="col-md-4">
+                        <h6>Absence Summary</h6>
+                        <table class="table">
+                            <tr>
+                                <th>Total Absences</th>
+                                <td>${absenceRecord.totalAbsences}</td>
+                            </tr>
+                            <tr>
+                                <th>Undefined</th>
+                                <td>${absenceRecord.undefined}</td>
+                            </tr>
+                            <tr>
+                                <th>Justified</th>
+                                <td>${absenceRecord.justified}</td>
+                            </tr>
+                            <tr>
+                                <th>Unjustified</th>
+                                <td>${absenceRecord.unjustified}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-8">
+                        <h6>Detailed Absences</h6>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Class</th>
+                                    <th>Period</th>
+                                    <th>Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${absenceRecord.details.map(detail => `
+                                    <tr>
+                                        <td>${detail.subject.subjectName || 'N/A'}</td>
+                                        <td>${detail.professor.professorName || 'N/A'}</td>
+                                        <td>${detail.dayClassNumber || 'N/A'}</td>
+                                        <td>
+                                            <span class="badge ${getAbsenceTypeClass(detail.absenceStatus)}">
+                                                ${getAbsenceTypeText(detail.absenceStatus) || 'N/A'}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+
+            modalBody.innerHTML = detailsHtml;
+        }
+
+        const absenceDetailsModal = new bootstrap.Modal(document.getElementById('absenceDetailsModal'));
+        absenceDetailsModal.show();
+    } catch (error) {
+        console.error('Error fetching absence details:', error);
+        modalBody.innerHTML = `<p>Error loading details: ${error.message}</p>`;
+    }
+}
+
+function getAbsenceTypeText(absenceStatus) {
+    switch (absenceStatus) {
+        case 10:
+            return 'Undefined';
+        case 20:
+            return 'Justified';
+        case 30:
+            return 'Unjustified';
+        default:
+            return 'N/A';
+    }
+}
+
+function getAbsenceTypeClass(absenceStatus) {
+    switch (absenceStatus) {
+        case 20:
+            return 'bg-success';
+        case 30:
+            return 'bg-danger';
+        default:
+            return 'bg-warning';
+    }
+}
+
+fetchAbsenceData();
+    </script>
+</body>
+</html>

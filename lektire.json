@@ -1,0 +1,26 @@
+[
+    {
+        "id": "1",
+        "title": "Dnevnik o Carnojevicu",
+        "author": "Milos Crnjanski",
+        "month": "februar",
+        "date": "21.02.2025",
+        "pdfUrl": "https://mcrnjanski.rs/ideje/slike/Milos-Crnjanski-Dnevnik-o-Carnojevicu.pdf"
+    },
+    {
+        "id": "2",
+        "author": "Ivo Andric",
+        "title": "Na Drini cuprija",
+        "month": "mart",
+        "date": "N/A",
+        "pdfUrl": "https://znakovi.wordpress.com/wp-content/uploads/2011/05/ivo-andric-na-drini-cuprija.pdf"
+    },
+    {
+        "id": "3",
+        "author": "Franc Kafka",
+        "title": "Proces",
+        "month": "maj",
+        "date": "N/A",
+        "pdfUrl": "https://tszoricaivanovic.wordpress.com/wp-content/uploads/2013/09/franc_kafka_-_proces.pdf"
+    }
+]

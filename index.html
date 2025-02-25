@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kalendar provera</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #4a69bd;
+            --light-blue: #6a89cc;
+            --background-color: #f1f3f6;
+            --text-color: #2f3542;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .header-gradient {
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2.5rem;
+        }
+
+        .card {
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(49, 69, 104, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .table-responsive {
+            margin-top: 1.5rem;
+        }
+
+        .table {
+            margin-bottom: 2rem;
+        }
+
+        .table thead {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .table tbody tr {
+            transition: background-color 0.2s ease;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: rgba(74, 105, 189, 0.05);
+        }
+
+        .btn-details {
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+            padding: 0.375rem 0.75rem;
+        }
+
+        .btn-details:hover {
+            background-color: var(--light-blue);
+            transform: translateY(-3px);
+        }
+
+        .modal-content {
+            border-radius: 16px;
+        }
+
+        #notificationStatus {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            margin-top: 0.5rem;
+        }
+
+        /* Lektire styles */
+        .lektire-card {
+            height: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .lektire-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 45px rgba(49, 69, 104, 0.15);
+        }
+
+        .lektire-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            color: white;
+            border-radius: 16px 16px 0 0;
+            padding: 1.5rem;
+        }
+
+        .lektire-title {
+            font-size: 1.25rem;
+            margin-bottom: 0;
+        }
+
+        .download-btn {
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color: var(--light-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .book-info {
+            color: var(--text-color);
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid px-0">
+        <header class="header-gradient mb-5">
+            <div class="container text-center">
+                <h1 class="display-6 fw-bold mb-3">
+                    <i class="bi bi-calendar-check me-2"></i>Raspored provera
+                </h1>
+                <p id="dateRangeText" class="text-white-50 mb-2"></p>
+                <div id="notificationStatus" class="text-center"></div>
+            </div>
+        </header>
+
+        <main class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card shadow-lg">
+                        <div class="card-body p-4">
+                            <div id="loading" class="text-center py-4">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+
+                            <div class="table-responsive d-none" id="tableContainer">
+                                <table id="activityTable" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Datum</th>
+                                            <th>Profesor</th>
+                                            <th>Ime predmeta</th>
+                                            <th>Deskripcija</th>
+                                            <th>Dodatne informacije</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tableBody"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lektire Section -->
+            <div class="card shadow-lg mt-5">
+                <div class="lektire-header">
+                    <h2 class="lektire-title">
+                        <i class="bi bi-book me-2"></i>Lektire
+                    </h2>
+                </div>
+                <div class="card-body p-4">
+                    <div id="lektireLoading" class="text-center py-4">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                    <div id="lektireList" class="row g-4">
+                        <!-- Lektire will be dynamically loaded here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Activity Detail Modal -->
+        <div class="modal fade" id="activityDetailModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header border-bottom-0">
+                        <h5 class="modal-title fw-bold">Detalji</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body" id="activityModalBody"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const today = new Date();
+        const endDate = new Date('2025-06-20');
+    
+        function formatFullDate(date) {
+            return date.toLocaleDateString('en-GB', { 
+                day: 'numeric', 
+                month: 'numeric', 
+                year: 'numeric' 
+            });
+        }
+    
+        function setDateRangeText() {
+            const dateRangeText = `From ${formatFullDate(today)} to ${formatFullDate(endDate)}`;
+            document.getElementById('dateRangeText').textContent = dateRangeText;
+            return dateRangeText;
+        }
+    
+        setDateRangeText();
+    
+        if ('serviceWorker' in navigator && 'PushManager' in window) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(reg => console.log('Service Worker Registered:', reg))
+                .catch(err => console.error('Service Worker Error:', err));
+        }
+    
+        async function subscribeUserToPush() {
+            const pushToken = localStorage.getItem('token-push-notification');
+            if (pushToken === "true") {
+                console.log('Push subscription already completed.');
+                return;
+            }
+    
+            const registration = await navigator.serviceWorker.ready;
+    
+            const subscription = await registration.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: 'BNVToOJiY1TWThj-uqYi-WBuuoq68SgjSPq01-rugLqAH5pysmz0LjegsndZAaLN_o1gXDET8R0cDdZHG_KTpsA',
+            });
+    
+            console.log('User subscribed:', subscription);
+    
+            await fetch('/api/save-subscription', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(subscription),
+            });
+    
+            localStorage.setItem('token-push-notification', "true");
+            console.log('Push subscription saved and token-push-notification set to true.');
+        }
+    
+        class NotificationManager {
+            constructor() {
+                this.activities = [];
+                this.notificationStatus = document.getElementById('notificationStatus');
+                this.notifiedActivities = new Set();
+                this.activityDetailModal = new bootstrap.Modal(document.getElementById('activityDetailModal'));
+            }
+    
+            async requestPermission() {
+                if (!("Notification" in window)) {
+                    this.notificationStatus.textContent = "Browser does not support notifications";
+                    return false;
+                }
+    
+                if (Notification.permission !== "granted") {
+                    const permission = await Notification.requestPermission();
+                    return permission === "granted";
+                }
+                return true;
+            }
+    
+            async init() {
+                const permissionGranted = await this.requestPermission();
+                if (permissionGranted) {
+                    this.notificationStatus.innerHTML = 
+                        '<i class="bi bi-bell-fill text-success me-1"></i>Notifications Enabled';
+                    await subscribeUserToPush();
+                } else {
+                    this.notificationStatus.innerHTML = 
+                        '<i class="bi bi-bell-slash-fill text-danger me-1"></i>Notifications Blocked';
+                }
+            }
+        }
+    
+        const notificationManager = new NotificationManager();
+    
+        async function fetchActivities() {
+            try {
+                const response = await fetch('/api/action-report');
+                if (!response.ok) throw new Error('Failed to fetch activities');
+    
+                const activities = await response.json();
+                notificationManager.activities = activities.filter(activity => {
+                    const activityDate = new Date(activity.date);
+                    return activityDate >= new Date() && activityDate <= new Date('2025-06-20');
+                });
+    
+                displayActivities(notificationManager.activities);
+                await notificationManager.init();
+            } catch (error) {
+                document.getElementById('loading').innerHTML = `
+                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        Error loading activities
+                    </div>
+                `;
+                console.error(error);
+            }
+        }
+    
+        function displayActivities(activities) {
+            const tableBody = document.getElementById('tableBody');
+            const tableContainer = document.getElementById('tableContainer');
+            const loading = document.getElementById('loading');
+
+            tableBody.innerHTML = '';
+
+            if (activities.length === 0) {
+                loading.innerHTML = `
+                    <div class="alert alert-info d-flex align-items-center" role="alert">
+                        <i class="bi bi-info-circle-fill me-2"></i>
+                        No activities found for the selected date range
+                    </div>
+                `;
+                return;
+            }
+
+            activities.forEach(activity => {
+                const activityDate = new Date(activity.date);
+                const formattedDate = activityDate.toLocaleDateString('en-GB');
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${formattedDate}</td>
+                    <td>${activity.professor.professorName}</td>
+                    <td>${activity.subject.subjectName}</td>
+                    <td>${activity.description}</td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary details-btn" data-activity-id="${activity.actionPlanningId}">
+                            <i class="bi bi-info-circle"></i>
+                        </button>
+                    </td>
+                `;
+
+                row.querySelector('.details-btn').addEventListener('click', () => {
+                    const modalBody = document.getElementById('activityModalBody');
+                    modalBody.innerHTML = `
+                        <p><strong>Datum:</strong> ${formattedDate}</p>
+                        <p><strong>Profesor:</strong> ${activity.professor.professorName}</p>
+                        <p><strong>Predmet:</strong> ${activity.subject.subjectName}</p>
+                        <p><strong>Deskripcija:</strong> ${activity.description}</p>
+                        <p><strong>subjectID:</strong> ${activity.subject.subjectId}</p>
+                        <p><strong>professorID:</strong> ${activity.professor.professorId}</p>
+                        <p><strong>UserID:</strong> ${activity.professor.userId}</p>
+                        <p><strong>ActionPlanningID:</strong> ${activity.actionPlanningId}</p>
+                    `;
+                    notificationManager.activityDetailModal.show();
+                });
+
+                tableBody.appendChild(row);
+            });
+
+            loading.classList.add('d-none');
+            tableContainer.classList.remove('d-none');
+        }
+
+        async function fetchLektire() {
+            try {
+                const response = await fetch('/api/get-lektire');
+                if (!response.ok) throw new Error('Failed to fetch lektire');
+                
+                const lektire = await response.json();
+                displayLektire(lektire);
+            } catch (error) {
+                document.getElementById('lektireLoading').innerHTML = `
+                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        Error loading reading materials
+                    </div>
+                `;
+                console.error('Error fetching lektire:', error);
+            }
+        }
+
+        function displayLektire(lektire) {
+            const lektireList = document.getElementById('lektireList');
+            const lektireLoading = document.getElementById('lektireLoading');
+
+            if (lektire.length === 0) {
+                lektireLoading.innerHTML = `
+                    <div class="alert alert-info d-flex align-items-center" role="alert">
+                        <i class="bi bi-info-circle-fill me-2"></i>
+                        No reading materials available
+                    </div>
+                `;
+                return;
+            }
+
+            lektireLoading.style.display = 'none';
+            lektireList.innerHTML = lektire.map(knjiga => `
+                <div class="col-md-4">
+                    <div class="card lektire-card">
+                        <div class="card-body d-flex flex-column">
+                            <div class="mb-4">
+                                <h5 class="card-title fw-bold mb-2">${knjiga.title}</h5>
+                                <p class="book-info mb-1">
+                                    <i class="bi bi-person me-2"></i>${knjiga.author}
+                                </p>
+                                <p class="book-info">
+                                    <i class="bi bi-calendar3 me-2"></i>${knjiga.month}
+                                </p>
+                                <p class="book-info">
+                                    <i class="bi bi-calendar3 me-2"></i>${knjiga.date}
+                                </p>
+                            </div>
+                            <a href="${knjiga.pdfUrl}" class="download-btn btn mt-auto py-2" target="_blank">
+                                <i class="bi bi-file-earmark-pdf me-2"></i>Download PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Initialize both fetches when the page loads
+        fetchActivities();
+        fetchLektire();
+    </script>
+</body>
+</html>
